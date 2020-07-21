@@ -8,8 +8,3 @@ INSERT INTO AD_Val_Rule (AD_Client_ID,AD_Org_ID,AD_Val_Rule_ID,Code,Created,Crea
 UPDATE AD_Process_Para SET AD_Val_Rule_ID=540507,Updated=TO_TIMESTAMP('2020-07-07 15:35:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_Para_ID=541763
 ;
 
--- 2020-07-14T13:26:35.743Z
--- URL zum Konzept
-UPDATE AD_Val_Rule SET Code='ESR_Import.IsReconciled=''N''',Updated=TO_TIMESTAMP('2020-07-14 16:26:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Val_Rule_ID=540507
-;
-
