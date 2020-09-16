@@ -16,7 +16,7 @@
  *****************************************************************************/
 package org.compiere.model;
 
-import static de.metas.util.lang.CoalesceUtil.firstGreaterThanZero;
+import static de.metas.common.util.CoalesceUtil.firstGreaterThanZero;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -28,6 +28,7 @@ import java.util.Properties;
 import org.adempiere.ad.callout.api.ICalloutField;
 import org.adempiere.ad.trx.api.ITrx;
 import org.adempiere.model.InterfaceWrapperHelper;
+import org.adempiere.service.ISysConfigBL;
 import org.compiere.Adempiere;
 import org.compiere.util.DB;
 import org.compiere.util.DisplayType;
@@ -49,7 +50,6 @@ import de.metas.product.IProductBL;
 import de.metas.security.IUserRolePermissions;
 import de.metas.tax.api.ITaxBL;
 import de.metas.tax.api.ITaxDAO;
-import de.metas.uom.IUOMDAO;
 import de.metas.uom.LegacyUOMConversionUtils;
 import de.metas.uom.UomId;
 import de.metas.util.Check;
@@ -68,6 +68,8 @@ public class CalloutInvoice extends CalloutEngine
 	private static final String CTX_UOMConversion = "UOMConversion";
 
 	private static final String MSG_UnderLimitPrice = "UnderLimitPrice";
+
+	protected static final String SYS_Config_C_Invoice_SOTrx_OnlyAllowBillToDefault_Contact = "C_Invoice.SOTrx_OnlyAllowBillToDefault_Contact";
 
 	/**
 	 * Invoice Header- BPartner.
@@ -89,7 +91,12 @@ public class CalloutInvoice extends CalloutEngine
 			return NO_ERROR;
 		}
 
-		final String sql = "SELECT p.AD_Language,p.C_PaymentTerm_ID,"
+		final boolean isAllowOnlyBillToDefault_Contact = Services.get(ISysConfigBL.class)
+				.getBooleanValue(SYS_Config_C_Invoice_SOTrx_OnlyAllowBillToDefault_Contact, false);
+
+		final boolean isSOTrx = invoice.isSOTrx();
+
+		final StringBuilder sql = new StringBuilder().append("SELECT p.AD_Language,p.C_PaymentTerm_ID,"
 				+ " COALESCE(p.M_PriceList_ID,g.M_PriceList_ID) AS M_PriceList_ID, p.PaymentRule,p.POReference,"
 				+ " p.SO_Description,p.IsDiscountPrinted, "
 				+ " stats." + I_C_BPartner_Stats.COLUMNNAME_SO_CreditUsed + ", "
@@ -105,15 +112,22 @@ public class CalloutInvoice extends CalloutEngine
 				+ ")"
 				+ " INNER JOIN C_BP_Group g ON (p.C_BP_Group_ID=g.C_BP_Group_ID)"
 				+ " LEFT OUTER JOIN C_BPartner_Location l ON (p.C_BPartner_ID=l.C_BPartner_ID AND l.IsBillTo='Y' AND l.IsActive='Y')"
-				+ " LEFT OUTER JOIN AD_User c ON (p.C_BPartner_ID=c.C_BPartner_ID) "
-				+ "WHERE p.C_BPartner_ID=? AND p.IsActive='Y'";		// #1
+				+ " LEFT OUTER JOIN AD_User c ON (p.C_BPartner_ID=c.C_BPartner_ID) ");
 
-		final boolean isSOTrx = invoice.isSOTrx();
+		if (isAllowOnlyBillToDefault_Contact && isSOTrx)
+		{
+			sql.append(" AND c." + I_AD_User.COLUMNNAME_IsBillToContact_Default + " = 'Y'");
+		}
+		sql.append(
+				" WHERE p.C_BPartner_ID=? AND p.IsActive='Y' "
+						+ " ORDER BY c." + I_AD_User.COLUMNNAME_IsBillToContact_Default + " DESC NULLS FIRST"
+						+ ";	");		// #1
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try
 		{
-			pstmt = DB.prepareStatement(sql, ITrx.TRXNAME_None);
+			pstmt = DB.prepareStatement(sql.toString(), ITrx.TRXNAME_None);
 			pstmt.setInt(1, bPartnerID);
 			rs = pstmt.executeQuery();
 			//
@@ -173,7 +187,6 @@ public class CalloutInvoice extends CalloutEngine
 				// Location
 				int bpartnerLocationId = rs.getInt("C_BPartner_Location_ID");
 				BPartnerContactId contactUserId = BPartnerContactId.ofRepoIdOrNull(bPartnerID, rs.getInt("AD_User_ID"));
-
 
 				// overwritten by InfoBP selection - works only if InfoWindow
 				// was used otherwise creates error (uses last value, may belong to different BP)
@@ -389,9 +402,9 @@ public class CalloutInvoice extends CalloutEngine
 
 		invoiceLine.setM_AttributeSetInstance(null);
 		invoiceLine.setS_ResourceAssignment_ID(-1);
-		invoiceLine.setC_UOM_ID(IUOMDAO.C_UOM_ID_Each); // EA
+		invoiceLine.setC_UOM_ID(UomId.EACH.getRepoId()); // EA
 
-		invoiceLine.setPrice_UOM_ID(IUOMDAO.C_UOM_ID_Each); // 07216: Make sure price UOM is also filled.
+		invoiceLine.setPrice_UOM_ID(UomId.EACH.getRepoId()); // 07216: Make sure price UOM is also filled.
 
 		calloutField.putContext(CTX_DiscountSchema, false);
 

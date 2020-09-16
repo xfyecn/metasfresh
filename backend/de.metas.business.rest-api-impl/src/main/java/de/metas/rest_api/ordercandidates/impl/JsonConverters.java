@@ -1,7 +1,5 @@
 package de.metas.rest_api.ordercandidates.impl;
 
-import static de.metas.util.Check.isEmpty;
-
 import java.time.ZoneId;
 import java.util.List;
 
@@ -42,6 +40,7 @@ import de.metas.rest_api.utils.DocTypeService;
 import de.metas.shipping.ShipperId;
 import de.metas.uom.IUOMDAO;
 import de.metas.uom.UomId;
+import de.metas.uom.X12DE355;
 import de.metas.util.Check;
 import de.metas.util.Services;
 import de.metas.util.lang.Percent;
@@ -130,9 +129,9 @@ public class JsonConverters
 		final PaymentTermId paymentTermId = masterdataProvider.getPaymentTermId(request, orgId);
 
 		final UomId uomId;
-		if (!isEmpty(request.getUomCode(), true))
+		if (!Check.isBlank(request.getUomCode()))
 		{
-			uomId = uomDAO.getUomIdByX12DE355(request.getUomCode());
+			uomId = uomDAO.getUomIdByX12DE355(X12DE355.ofCode(request.getUomCode()));
 		}
 		else
 		{

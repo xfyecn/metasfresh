@@ -1,8 +1,10 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Map as iMap } from 'immutable';
 import Moment from 'moment-timezone';
 import currentDevice from 'current-device';
 import deepUnfreeze from 'deep-unfreeze';
+import { toInteger } from 'lodash';
 
 import { getItemsByProperty, nullToEmptyStrings } from './index';
 import { viewState, getView } from '../reducers/viewHandler';
@@ -18,6 +20,7 @@ const DLpropTypes = {
   // from parent
   windowId: PropTypes.string.isRequired,
   viewId: PropTypes.string,
+  queryViewId: PropTypes.string,
   updateParentSelectedIds: PropTypes.func,
   page: PropTypes.number,
   sort: PropTypes.string,
@@ -45,7 +48,6 @@ const DLpropTypes = {
   filterView: PropTypes.func.isRequired,
   deleteTable: PropTypes.func.isRequired,
   indicatorState: PropTypes.func.isRequired,
-  closeListIncludedView: PropTypes.func.isRequired,
   setListPagination: PropTypes.func.isRequired,
   setListSorting: PropTypes.func.isRequired,
   setListId: PropTypes.func.isRequired,
@@ -74,20 +76,25 @@ const DLmapStateToProps = (state, props) => {
     refDocumentId: queryRefDocumentId,
     refTabId: queryRefTabId,
   } = props;
-  const identifier = isModal ? defaultViewId : windowId;
-  let master = getView(state, identifier);
+  let master = getView(state, windowId, isModal);
 
+  // use empty view's data. This is used in tests
   if (!master) {
     master = viewState;
   }
-
-  const sort = master.sort ? master.sort : querySort;
-  const page = master.page ? master.page : parseInt(queryPage);
   let viewId = master.viewId ? master.viewId : queryViewId;
+  let sort = querySort || master.sort;
+  let page = toInteger(queryPage) || master.page;
+  // used for included views, so that we don't use sorting/pagination
+  // of the parent view
+  if (props.isIncluded) {
+    sort = master.sort || sort;
+    page = master.page || page;
+  }
 
   // used for modals
-  if (props.defaultViewId) {
-    viewId = props.defaultViewId;
+  if (defaultViewId) {
+    viewId = defaultViewId;
   }
 
   const tableId = getTableId({ windowId, viewId });
@@ -101,9 +108,9 @@ const DLmapStateToProps = (state, props) => {
   let childTableId = null;
   const childSelector = getSelection();
   const { includedView } = props;
-  if (includedView && includedView.windowType) {
+  if (includedView && includedView.windowId) {
     childTableId = getTableId({
-      windowId: includedView.windowType,
+      windowId: includedView.windowId,
       viewId: includedView.viewId,
     });
   }
@@ -122,8 +129,9 @@ const DLmapStateToProps = (state, props) => {
     page,
     sort,
     viewId,
+    queryViewId,
     table,
-    reduxData: master,
+    viewData: master,
     layout: master.layout,
     layoutPending: master.layoutPending,
     referenceId: queryReferenceId,
@@ -503,4 +511,29 @@ export function createCollapsedMap(node, isCollapsed, initialMap) {
   }
 
   return collapsedMap;
+}
+
+export function renderHeaderProperties(groups) {
+  return groups.reduce((acc, group, idx) => {
+    let cursor = 0;
+
+    do {
+      const entry = group.entries[cursor];
+
+      acc.push(
+        <span key={`${idx}_${cursor}`} className="optional-name">
+          <p className="caption">{entry.caption}:</p>{' '}
+          <p className="value">{entry.value}</p>
+        </span>
+      );
+
+      cursor += 1;
+    } while (cursor < group.entries.length);
+
+    if (idx !== groups.length - 1) {
+      acc.push(<span key={`${idx}_${cursor}`} className="separator" />);
+    }
+
+    return acc;
+  }, []);
 }

@@ -22,32 +22,8 @@
 
 package de.metas.handlingunits.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-
-import javax.annotation.Nullable;
-
-import org.adempiere.ad.trx.api.ITrxManager;
-import org.adempiere.exceptions.AdempiereException;
-import org.adempiere.mm.attributes.api.AttributesKeys;
-import org.adempiere.mm.attributes.api.ImmutableAttributeSet;
-import org.adempiere.model.InterfaceWrapperHelper;
-import org.adempiere.util.lang.IContextAware;
-import org.adempiere.util.lang.Mutable;
-import org.compiere.model.I_C_UOM;
-import org.compiere.model.I_M_Attribute;
-import org.compiere.model.I_M_Product;
-import org.compiere.model.I_M_Transaction;
-import org.slf4j.Logger;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-
 import de.metas.handlingunits.HUIteratorListenerAdapter;
 import de.metas.handlingunits.HuId;
 import de.metas.handlingunits.HuPackingInstructionsId;
@@ -58,6 +34,7 @@ import de.metas.handlingunits.IHUContext;
 import de.metas.handlingunits.IHUContextFactory;
 import de.metas.handlingunits.IHUDisplayNameBuilder;
 import de.metas.handlingunits.IHUIterator;
+import de.metas.handlingunits.IHUQueryBuilder;
 import de.metas.handlingunits.IHUStatusBL;
 import de.metas.handlingunits.IHandlingUnitsBL;
 import de.metas.handlingunits.IHandlingUnitsDAO;
@@ -82,6 +59,7 @@ import de.metas.handlingunits.model.X_M_HU_PI_Version;
 import de.metas.handlingunits.shipmentschedule.api.IHUShipmentScheduleDAO;
 import de.metas.handlingunits.storage.IHUStorage;
 import de.metas.handlingunits.storage.IHUStorageFactory;
+import de.metas.handlingunits.storage.IProductStorage;
 import de.metas.handlingunits.storage.impl.DefaultHUStorageFactory;
 import de.metas.logging.LogManager;
 import de.metas.material.event.commons.AttributesKey;
@@ -91,6 +69,27 @@ import de.metas.util.Check;
 import de.metas.util.GuavaCollectors;
 import de.metas.util.Services;
 import lombok.NonNull;
+import org.adempiere.ad.trx.api.ITrxManager;
+import org.adempiere.exceptions.AdempiereException;
+import org.adempiere.mm.attributes.api.AttributesKeys;
+import org.adempiere.mm.attributes.api.ImmutableAttributeSet;
+import org.adempiere.model.InterfaceWrapperHelper;
+import org.adempiere.util.lang.IContextAware;
+import org.adempiere.util.lang.Mutable;
+import org.compiere.model.I_C_UOM;
+import org.compiere.model.I_M_Attribute;
+import org.compiere.model.I_M_Product;
+import org.compiere.model.I_M_Transaction;
+import org.slf4j.Logger;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 
 public class HandlingUnitsBL implements IHandlingUnitsBL
 {
@@ -909,6 +908,13 @@ public class HandlingUnitsBL implements IHandlingUnitsBL
 	}
 
 	@Override
+	public IHUQueryBuilder createHUQueryBuilder()
+	{
+		final IHandlingUnitsDAO handlingUnitsDAO = Services.get(IHandlingUnitsDAO.class);
+		return handlingUnitsDAO.createHUQueryBuilder();
+	}
+
+	@Override
 	public AttributesKey getStorageRelevantAttributesKey(@NonNull final I_M_HU hu)
 	{
 		final IAttributeStorageFactoryService attributeStorageFactoryService = Services.get(IAttributeStorageFactoryService.class);
@@ -921,5 +927,12 @@ public class HandlingUnitsBL implements IHandlingUnitsBL
 		return AttributesKeys
 				.createAttributesKeyFromAttributeSet(storageRelevantSubSet)
 				.orElse(AttributesKey.NONE);
+	}
+
+	public boolean isEmptyStorage(@NonNull final I_M_HU hu)
+	{
+		return getStorageFactory()
+				.streamHUProductStorages(hu)
+				.allMatch(IProductStorage::isEmpty);
 	}
 }
