@@ -1,5 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
-@import './variables.css';
+@import './themes/variables.css';
 @import './focus.css';
 
 @import './board.css';
@@ -29,8 +29,6 @@
 @import './filtersitem.css';
 
 @import './intro.css';
-
-@import './theme.css';
 
 /**
 *  IMPORTANT NOTE
