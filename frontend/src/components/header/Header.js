@@ -616,16 +616,19 @@ class Header extends PureComponent {
                     window.location = '/';
                   }}
                 >
-                  DASHBOARD
+                  <i className="fal fa-th-large" />
+                  &nbsp; DASHBOARD
                 </div>
-                <div className="float-left header-tab">SUCHE</div>
+                <div className="float-left header-tab">
+                  <i className="far fa-search" /> &nbsp; SUCHE
+                </div>
                 <div
                   className="float-left header-tab"
                   onClick={() => {
                     window.location = '/sitemap';
                   }}
                 >
-                  TOOLS & RESOURCEN
+                  <i className="fal fa-wrench" /> &nbsp; TOOLS & RESOURCEN
                 </div>
                 <div
                   className="float-left header-tab"
@@ -633,7 +636,9 @@ class Header extends PureComponent {
                     window.location = '/window/53100/100';
                   }}
                 >
-                  SYSTEM-ADMINISTRATION
+                  <i className="far fa-cog"></i>&nbsp;
+
+SYSTEM-ADMINISTRATION
                 </div>
 
                 {/* <div
