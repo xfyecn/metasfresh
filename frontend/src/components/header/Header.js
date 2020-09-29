@@ -619,7 +619,12 @@ class Header extends PureComponent {
                   <i className="fal fa-th-large header-link-icon" />
                   DASHBOARD
                 </div>
-                <div className="float-left header-tab">
+                <div
+                  className="float-left header-tab"
+                  onClick={() => {
+                    window.location = '/sitemap';
+                  }}
+                >
                   <i className="far fa-search  header-link-icon" />
                   SUCHE
                 </div>
