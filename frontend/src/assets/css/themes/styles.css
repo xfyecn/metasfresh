@@ -31,6 +31,8 @@
   margin-right: 30px;
   color: $brand-link-color;
   cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
 }
 
 .header-tab :hover {
