@@ -59,6 +59,18 @@
   margin-left: 1.2rem;
 }
 
+.header-item-open {
+  background-color: #303240;
+  border: 0px;
+}
+
+.header-item-container {
+  background-color: #303240;
+  border: 0px;
+}
+
+
+
 .vertical-flip {
   transform: rotate(272deg);
 }

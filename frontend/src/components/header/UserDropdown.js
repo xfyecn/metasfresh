@@ -141,7 +141,7 @@ class UserDropdown extends Component {
         >
           <Avatar id={me.avatarId} />
         </div> */}
-        <div className="header-item" onClick={() => handleUDOpen(true)}>
+        <div className="header-item header-tab" onClick={() => handleUDOpen(true)}>
           <span>{me.fullname}</span>
           <span className="header-left-spacing">
             <i className="far fa-chevron-down" />
