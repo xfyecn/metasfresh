@@ -622,7 +622,8 @@ class Header extends PureComponent {
                 </div>
                 <div
                   className={classnames('float-left header-tab', {
-                    'header-item-active': window.location.pathname === '/sitemap',
+                    'header-item-active':
+                      window.location.pathname === '/sitemap',
                   })}
                   onClick={() => {
                     window.location = '/sitemap';
@@ -633,7 +634,8 @@ class Header extends PureComponent {
                 </div>
                 <div
                   className={classnames('float-left header-tab', {
-                    'header-item-active': window.location.pathname === '/window/236',
+                    'header-item-active':
+                      window.location.pathname === '/window/236',
                   })}
                   onClick={() => {
                     window.location = '/window/236';
@@ -644,7 +646,8 @@ class Header extends PureComponent {
                 </div>
                 <div
                   className={classnames('float-left header-tab', {
-                    'header-item-active': window.location.pathname === '/window/53100/100',
+                    'header-item-active':
+                      window.location.pathname === '/window/53100/100',
                   })}
                   onClick={() => {
                     window.location = '/window/53100/100';
