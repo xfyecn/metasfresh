@@ -636,9 +636,8 @@ class Header extends PureComponent {
                     window.location = '/window/53100/100';
                   }}
                 >
-                  <i className="far fa-cog"></i>&nbsp;
-
-SYSTEM-ADMINISTRATION
+                  <i className="far fa-cog" />
+                  &nbsp; SYSTEM-ADMINISTRATION
                 </div>
 
                 {/* <div
