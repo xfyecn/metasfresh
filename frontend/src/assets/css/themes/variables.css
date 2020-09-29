@@ -1,13 +1,19 @@
+$shadow-light: rgba(0, 0, 0, 15%);
+$color-hover: rgba(107, 109, 145, 15%);
+$color-row: #e4e1e2;
+$color-active: #fcfbfa;
+$font-color-dark: #303140;
+$brand-font-color: #6B6D91;
+$brand-color-secondary: #72717C;
+$brand-bright-color: #f8f4ef;
+$brand-border-color: $brand-font-color;
+$brand-border-color-2: #dedfe0;
+
 $brand-color-primary: #9aafbd;
-$brand-color-secondary: #9BAFBC;
 $brand-light-color: #C9D5DC;
 $brand-super-light-color: #f2f7fa;
-$brand-font-color: #6B6D91;
-$brand-font-color-secondary: black;
-$brand-bright-color: #f8f4ef;
-
+$brand-font-color-secondary: $font-color-dark;
 $brand-link-color: #BABABF;
-
 $brand-success-color: #89d729;
 $brand-success-dark-color: #76b727;
 $brand-primary-color: #1d4776;
@@ -21,8 +27,9 @@ $brand-default-color: #eef2f7;
 $brand-font-color-danger: #e85667;
 $brand-danger-light-color: #fdf7f8;
 $brand-font-color-weak: #afbfc9;
-$brand-border-color: $brand-font-color;
-$brand-border-color-2: #e1e8ee;
+
+
+
 $brand-dark-color: #dfe5ec;
 $brand-mandatory-color: #a8daf8;
 $brand-pulse-effect: #FDFBD4;
