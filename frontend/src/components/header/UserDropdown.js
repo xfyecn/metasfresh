@@ -150,7 +150,8 @@ class UserDropdown extends Component {
         >
           <span>{me.fullname}</span>
           <span className="header-left-spacing">
-            <i className="far fa-chevron-down" />
+            {open && <i className="far fa-chevron-up" />}
+            {!open && <i className="far fa-chevron-down" />}
           </span>
         </div>
 
