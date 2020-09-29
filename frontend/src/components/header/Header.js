@@ -9,7 +9,6 @@ import { deleteRequest } from '../../api';
 import { duplicateRequest, openFile } from '../../actions/GenericActions';
 import { openModal } from '../../actions/WindowActions';
 import { setBreadcrumb } from '../../actions/MenuActions';
-
 import keymap from '../../shortcuts/keymap';
 import GlobalContextShortcuts from '../keyshortcuts/GlobalContextShortcuts';
 
@@ -611,7 +610,9 @@ class Header extends PureComponent {
               <div className="header-left-side">
                 {/* custom design */}
                 <div
-                  className="float-left header-tab"
+                  className={classnames('float-left header-tab', {
+                    'header-item-active': window.location.pathname === '/',
+                  })}
                   onClick={() => {
                     window.location = '/';
                   }}
@@ -620,7 +621,9 @@ class Header extends PureComponent {
                   DASHBOARD
                 </div>
                 <div
-                  className="float-left header-tab"
+                  className={classnames('float-left header-tab', {
+                    'header-item-active': window.location.pathname === '/sitemap',
+                  })}
                   onClick={() => {
                     window.location = '/sitemap';
                   }}
@@ -629,16 +632,20 @@ class Header extends PureComponent {
                   SUCHE
                 </div>
                 <div
-                  className="float-left header-tab"
+                  className={classnames('float-left header-tab', {
+                    'header-item-active': window.location.pathname === '/window/236',
+                  })}
                   onClick={() => {
-                    window.location = '/sitemap';
+                    window.location = '/window/236';
                   }}
                 >
                   <i className="fal fa-wrench header-link-icon vertical-flip" />
                   TOOLS & RESOURCEN
                 </div>
                 <div
-                  className="float-left header-tab"
+                  className={classnames('float-left header-tab', {
+                    'header-item-active': window.location.pathname === '/window/53100/100',
+                  })}
                   onClick={() => {
                     window.location = '/window/53100/100';
                   }}

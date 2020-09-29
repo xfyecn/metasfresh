@@ -39,6 +39,10 @@
   color: #ffffff;
 }
 
+.header-item-active {
+  color: #ffffff;
+}
+
 .header-link-icon {
   margin-right:5px;
 }
