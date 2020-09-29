@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import onClickOutside from 'react-onclickoutside';
 import PropTypes from 'prop-types';
 
-import Avatar from '../app/Avatar';
+// import Avatar from '../app/Avatar';
 import Tooltips from '../tooltips/Tooltips';
 
 /**
@@ -135,18 +135,24 @@ class UserDropdown extends Component {
         onMouseEnter={() => toggleTooltip(shortcut)}
         onMouseLeave={() => toggleTooltip('')}
       >
-        <div
+        {/* <div
           className="header-item avatar-container"
           onClick={() => handleUDOpen(true)}
         >
           <Avatar id={me.avatarId} />
+        </div> */}
+        <div className="header-item" onClick={() => handleUDOpen(true)}>
+          <span>{me.fullname}</span>
+          <span className="header-left-spacing">
+            <i className="far fa-chevron-down" />
+          </span>
         </div>
 
         {open && (
           <div className="user-dropdown-list" onKeyDown={this.handleKeyDown}>
-            <div className="user-dropdown-item user-dropdown-header-item meta-text-primary">
+            {/* <div className="user-dropdown-item user-dropdown-header-item meta-text-primary">
               {me.fullname}
-            </div>
+            </div> */}
             <hr className="context-menu-separator" />
             {
               // Placeholder, empty place, to keep focus when it is

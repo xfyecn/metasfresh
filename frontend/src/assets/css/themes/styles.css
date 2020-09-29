@@ -51,6 +51,14 @@
   align-items: center;
 }
 
+.header-right-side {
+  width: calc(40% - 75px);
+}
+
+.header-left-spacing {
+  margin-left: 1.2rem;
+}
+
 .vertical-flip {
   transform: rotate(272deg);
 }
