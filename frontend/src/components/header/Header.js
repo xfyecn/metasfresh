@@ -563,7 +563,7 @@ class Header extends PureComponent {
       handleEditModeToggle,
       plugins,
       indicator,
-      // hasComments,
+      hasComments,
     } = this.props;
 
     const {
@@ -657,7 +657,7 @@ class Header extends PureComponent {
                   SYSTEM-ADMINISTRATION
                 </div>
 
-                {/* <div
+                <div
                   onClick={() => this.closeOverlays('isSubheaderShow')}
                   onMouseEnter={() =>
                     this.toggleTooltip(keymap.OPEN_ACTIONS_MENU)
@@ -691,7 +691,7 @@ class Header extends PureComponent {
                     />
                   )}
                 </div>
-
+                {/* 
                 <Breadcrumb
                   breadcrumb={breadcrumb}
                   windowType={windowId}
