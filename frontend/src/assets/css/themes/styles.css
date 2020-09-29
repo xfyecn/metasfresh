@@ -73,7 +73,9 @@
   border: 0px;
 }
 
-
+.header-user-link-open {
+  color: #ffffff;
+}
 
 .vertical-flip {
   transform: rotate(272deg);

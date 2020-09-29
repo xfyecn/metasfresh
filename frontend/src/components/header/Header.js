@@ -755,7 +755,7 @@ class Header extends PureComponent {
                   }
                   onMouseLeave={() => this.toggleTooltip('')}
                 >
-                  <span className="header-item header-item-badge icon-lg">
+                  <span className="header-item header-item-badge icon-lg header-tab">
                     <i className="meta-icon-notifications" />
                     {inbox.unreadCount > 0 && (
                       <span className="notification-number size-md">

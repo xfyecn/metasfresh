@@ -2,6 +2,7 @@ import counterpart from 'counterpart';
 import React, { Component } from 'react';
 import onClickOutside from 'react-onclickoutside';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // import Avatar from '../app/Avatar';
 import Tooltips from '../tooltips/Tooltips';
@@ -142,7 +143,9 @@ class UserDropdown extends Component {
           <Avatar id={me.avatarId} />
         </div> */}
         <div
-          className="header-item header-tab"
+          className={classnames('header-item', {
+            'header-user-link-open': open,
+          })}
           onClick={() => handleUDOpen(true)}
         >
           <span>{me.fullname}</span>
