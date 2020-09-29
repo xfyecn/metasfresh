@@ -14,6 +14,15 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.349019607843137); 
 }
 
+.btn-meta-outline-secondary {
+  border-color: black;
+}
+
+.tag-default {
+  background-color: $brand-font-color;
+  color: white;
+}
+
 .custom-logo {
   padding-right: 4rem;
 }
@@ -26,4 +35,117 @@
 
 .header-tab :hover {
   color: #ffffff;
+}
+
+.table-flex-wrapper {
+  background-color: transparent;
+  border: none;
+}
+
+.document-list-header {
+  box-shadow: 0px 2px 6px rgb(0 0 0 / 15%);
+  color: $brand-font-color-secondary;
+  font-family: 'Inter', sans-serif;
+
+  .header-element {
+    .filter-caption, .action-label {
+      font-size: 15px;
+      font-weight: 500;
+      padding-right: 5px;
+    }
+  }
+}
+
+.table {
+  thead {
+    text-decoration: none;
+    
+    th {
+      background-color: transparent;
+      color: $brand-font-color;
+      border-bottom: 2px solid $brand-border-color;
+    }
+
+    .sort-menu {
+      &:hover {
+          .th-caption {
+              text-decoration: none;
+          }
+      }
+
+      .sort-ico {
+          color: $brand-font-color;
+      }
+
+      .th-caption {
+        color: inherit;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+      }
+    }
+  }
+
+  th, td {
+    padding: 1rem;
+    font-size: 15px;
+  }
+
+  td {
+    font-family: 'Inter', sans-serif;
+  }
+
+  &.table-bordered-vertically td {
+    border: none;
+  }
+}
+
+.table-striped {
+    border-collapse:separate; 
+    border-spacing:0 15px;
+
+    tbody tr {
+      &.tr-odd, &.tr-even {
+        background-color: #e4e1e2;
+
+        &:hover {
+          background-color: #f2f1f3;
+        }
+
+        &.row-selected {
+          background-color: #fcfbfa !important;
+        }
+      }
+
+      &.tr-even.row-disabled, &.tr-odd.row-disabled {
+        background-color: transparent;
+        color: inherit;
+      }
+
+      &.tr-even.row-boundary, &.tr-odd.row-boundary {
+        border-bottom: none;
+      }
+    }
+
+    .table-included tr {
+      background-color: transparent;
+    }
+}
+
+.pagination-row {
+  font-size: .8rem;
+  font-weight: 400;
+  font-family: 'Inter', sans-serif;
+
+  nav {
+    .page-link {
+      border: 1px solid $brand-border-color;
+      border-radius: 4px;
+      background-color: transparent;
+    }
+
+    .page-item.active .page-link {
+      background-color: $brand-border-color;
+      border-color: $brand-border-color;
+    }
+  }
 }
