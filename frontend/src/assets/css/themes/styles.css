@@ -19,8 +19,13 @@
 }
 
 .tag-default {
+  background-color: white;
+  color: $font-color-dark;
+}
+
+.tag-success {
   background-color: $brand-font-color;
-  color: white;
+  color: white;  
 }
 
 .custom-logo {
@@ -95,7 +100,7 @@
 }
 
 .document-list-header {
-  box-shadow: 0px 2px 6px rgb(0 0 0 / 15%);
+  box-shadow: 0px 2px 6px $shadow-light;
   color: $brand-font-color-secondary;
   font-family: 'Inter', sans-serif;
 
@@ -104,7 +109,32 @@
       font-size: 15px;
       font-weight: 500;
       padding-right: 5px;
+      color: $font-color-dark;
     }
+  }
+}
+
+.quick-actions-dropdown {
+  box-shadow: 3px 3px 6px rgba(56, 47, 42, 15%);
+  color: $brand-color-secondary;
+  border-color: $brand-border-color-2;
+  padding: 0;
+
+  .quick-actions-item {
+      &:hover{
+          background-color: $color-hover;
+          color: $font-color-dark;
+      }
+
+      &:focus {
+          background-color: $color-row;
+      }
+  }
+
+  .quick-actions-item-disabled {
+      padding: .5rem;
+      cursor: default;
+      color: $brand-color-secondary;
   }
 }
 
@@ -144,6 +174,7 @@
 
   td {
     font-family: 'Inter', sans-serif;
+    color: $font-color-dark;
   }
 
   &.table-bordered-vertically td {
@@ -157,14 +188,14 @@
 
     tbody tr {
       &.tr-odd, &.tr-even {
-        background-color: #e4e1e2;
+        background-color: $color-row;
 
         &:hover {
-          background-color: #f2f1f3;
+          background-color: $color-hover;
         }
 
         &.row-selected {
-          background-color: #fcfbfa !important;
+          background-color: $color-active !important;
         }
       }
 
