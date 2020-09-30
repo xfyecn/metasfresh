@@ -250,3 +250,20 @@
   background-color: #4d5b80;
   color: #fff;
 }
+
+.btn-meta-primary {
+  color: #fff;
+  background-color: #262833;
+  border-color: #262833;
+}
+.btn-meta-primary:hover{
+  background-color: color(#4d5b80; lightness(45%));
+  border-color: color(#4d5b80; lightness(45%));
+}
+
+.btn-header-open {
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  background-color: #4d5b80;
+  border-color: #4d5b80;
+}

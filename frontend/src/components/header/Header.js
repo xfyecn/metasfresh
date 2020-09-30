@@ -607,6 +607,42 @@ class Header extends PureComponent {
                   onClick={this.handleDashboardLink}
                 />
               </div>
+
+              <div
+                onClick={() => this.closeOverlays('isSubheaderShow')}
+                onMouseEnter={() =>
+                  this.toggleTooltip(keymap.OPEN_ACTIONS_MENU)
+                }
+                onMouseLeave={() => this.toggleTooltip('')}
+                className={classnames(
+                  'btn-square btn-header',
+                  'tooltip-parent js-not-unselect',
+                  {
+                    'btn-meta-default-dark btn-subheader-open btn-header-open': isSubheaderShow,
+                    'btn-meta-primary': !isSubheaderShow,
+                  }
+                )}
+              >
+                <i className="position-relative meta-icon-more">
+                  {hasComments && (
+                    <span
+                      className="notification-number size-sm"
+                      title={counterpart.translate('window.comments.caption')}
+                    />
+                  )}
+                </i>
+
+                {tooltipOpen === keymap.OPEN_ACTIONS_MENU && (
+                  <Tooltips
+                    name={keymap.OPEN_ACTIONS_MENU}
+                    action={counterpart.translate(
+                      'mainScreen.actionMenu.tooltip'
+                    )}
+                    type=""
+                  />
+                )}
+              </div>
+
               <div className="header-left-side">
                 {/* custom design */}
                 <div
@@ -657,40 +693,6 @@ class Header extends PureComponent {
                   SYSTEM-ADMINISTRATION
                 </div>
 
-                <div
-                  onClick={() => this.closeOverlays('isSubheaderShow')}
-                  onMouseEnter={() =>
-                    this.toggleTooltip(keymap.OPEN_ACTIONS_MENU)
-                  }
-                  onMouseLeave={() => this.toggleTooltip('')}
-                  className={classnames(
-                    'btn-square btn-header',
-                    'tooltip-parent js-not-unselect',
-                    {
-                      'btn-meta-default-dark btn-subheader-open btn-header-open': isSubheaderShow,
-                      'btn-meta-primary': !isSubheaderShow,
-                    }
-                  )}
-                >
-                  <i className="position-relative meta-icon-more">
-                    {hasComments && (
-                      <span
-                        className="notification-number size-sm"
-                        title={counterpart.translate('window.comments.caption')}
-                      />
-                    )}
-                  </i>
-
-                  {tooltipOpen === keymap.OPEN_ACTIONS_MENU && (
-                    <Tooltips
-                      name={keymap.OPEN_ACTIONS_MENU}
-                      action={counterpart.translate(
-                        'mainScreen.actionMenu.tooltip'
-                      )}
-                      type=""
-                    />
-                  )}
-                </div>
                 {/* 
                 <Breadcrumb
                   breadcrumb={breadcrumb}
