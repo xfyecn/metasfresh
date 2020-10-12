@@ -41,12 +41,10 @@
   margin-top: 15px;
   padding-bottom: 12px;
   margin-left: 5px;
+  font-size: 16px;
 }
 
 .header-tab:hover {
-  border-bottom: solid 3px #45D5E6;
-  margin-top: 15px;
-  padding-bottom: 15px;
   color: #ffffff;
 }
 

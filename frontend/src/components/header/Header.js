@@ -653,7 +653,7 @@ class Header extends PureComponent {
                     window.location = '/';
                   }}
                 >
-                  <i className="fal fa-th-large header-link-icon" />
+                  <i className="fal fa-grip-horizontal header-link-icon" />
                   DASHBOARD
                 </div>
                 <div
