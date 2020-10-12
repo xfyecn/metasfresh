@@ -247,9 +247,6 @@ background-color: $color-background;
 }
 
 .table-striped {
-    border-collapse:separate; 
-    border-spacing:0 15px;
-
     tbody tr {
       &.tr-odd, &.tr-even {
         background-color: transparent;
