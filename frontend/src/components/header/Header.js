@@ -654,7 +654,7 @@ class Header extends PureComponent {
                   }}
                 >
                   <i className="fal fa-grip-horizontal header-link-icon" />
-                  DASHBOARD
+                  <span className="header-item-ml">DASHBOARD</span>
                 </div>
                 <div
                   className={classnames('float-left header-tab', {
@@ -666,7 +666,7 @@ class Header extends PureComponent {
                   }}
                 >
                   <i className="far fa-search  header-link-icon" />
-                  SUCHE
+                  <span className="header-item-ml">SUCHE</span>
                 </div>
                 <div
                   className={classnames('float-left header-tab', {
@@ -678,7 +678,7 @@ class Header extends PureComponent {
                   }}
                 >
                   <i className="fal fa-wrench header-link-icon vertical-flip" />
-                  TOOLS & RESOURCEN
+                  <span className="header-item-ml">TOOLS & RESOURCEN</span>
                 </div>
                 <div
                   className={classnames('float-left header-tab', {
@@ -690,7 +690,7 @@ class Header extends PureComponent {
                   }}
                 >
                   <i className="far fa-cog header-link-icon" />
-                  SYSTEM-ADMINISTRATION
+                  <span className="header-item-ml">SYSTEM-ADMINISTRATION</span>
                 </div>
 
                 {/* 
