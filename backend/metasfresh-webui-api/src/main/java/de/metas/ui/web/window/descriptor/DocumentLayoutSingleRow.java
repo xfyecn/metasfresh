@@ -140,8 +140,21 @@ public class DocumentLayoutSingleRow
 					.stream()
 					.filter(sectionBuilder -> sectionBuilder.isValid())
 					.map(sectionBuilder -> sectionBuilder.build())
-					.filter(section -> section.hasColumns())
+					.filter(section -> isValidSection(section))
 					.collect(ImmutableList.toImmutableList());
+		}
+
+		private static boolean isValidSection(final DocumentLayoutSectionDescriptor section)
+		{
+			// Always show sections if they have an UIStyle set
+			// because we assume in this case is the job of frontend to decide what to do with it.
+			// see task #10108
+			if(Check.isNotBlank(section.getUiStyle()))
+			{
+				return true;
+			}
+
+			return section.hasColumns();
 		}
 
 		@Override

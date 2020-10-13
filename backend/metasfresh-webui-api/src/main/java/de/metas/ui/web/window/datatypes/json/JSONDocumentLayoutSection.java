@@ -2,6 +2,7 @@ package de.metas.ui.web.window.datatypes.json;
 
 import java.util.List;
 
+import de.metas.util.Check;
 import org.adempiere.exceptions.AdempiereException;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -111,6 +112,15 @@ public final class JSONDocumentLayoutSection
 			@NonNull final DocumentLayoutSectionDescriptor section,
 			@NonNull final JSONDocumentLayoutOptions options)
 	{
+		//
+		// Always provide the title in case the UIStyle is set.
+		// because we assume in this case is the job of frontend to decide what to do with it.
+		// see task #10108
+		if(Check.isNotBlank(section.getUiStyle()))
+		{
+			return section.getCaption(options.getAdLanguage()).trim();
+		}
+
 		if (CaptionMode.DISPLAY.equals(section.getCaptionMode()))
 		{
 			return section.getCaption(options.getAdLanguage()).trim();
