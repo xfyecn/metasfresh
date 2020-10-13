@@ -116,7 +116,7 @@ background-color: $color-background;
 }
 
 .header-right-side {
-  width: calc(27% - 5px);
+  width: calc(26% - 5px);
   height: 50px;
 }
 
