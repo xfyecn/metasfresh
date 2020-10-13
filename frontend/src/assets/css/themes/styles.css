@@ -392,7 +392,15 @@ background-color: $color-background;
 
 /* FORM elements */
 
+.form-control-label {
+  text-align: right;
+}
+
 .input-checkbox input:checked ~ .input-checkbox-tick {
     background: $brand-color-purple;
     border-color: $brand-color-purple;
+}
+
+input:checked + .input-slider {
+  background-color: $brand-color-purple;
 }
