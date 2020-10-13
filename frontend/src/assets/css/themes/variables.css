@@ -1,12 +1,11 @@
 $font-color-base: rgba(0,0,0,87%);
 $shadow-dark: rgba(0, 0, 0, 15%);
 $shadow-light: rgba(48,49,64,11%);
-$color-hover: rgba(107, 109, 145, 15%);
+$color-hover-light: #46475d;
 $color-background: #f7f4f0;
 $color-active: #fcfbfa;
 $color-dark: #303140;
 $brand-color-purple: #6B6D91;
-
 $font-color-dark: $color-dark;
 
 $brand-color-secondary: #72717C;

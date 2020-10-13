@@ -204,6 +204,16 @@ background-color: $color-background;
   padding-top: 20px;
 }
 
+.subheader-item:not(.subheader-item-disabled):hover {
+    background-color: $color-hover-light;
+    color: #fff;
+}
+
+.subheader-item:not(.subheader-item-disabled):focus {
+    background-color: $color-hover-light;
+    color: #fff;
+}
+
 /* Filters panel */
 
 .document-list-wrapper {
@@ -232,7 +242,7 @@ background-color: $color-background;
 
   .quick-actions-item {
       &:hover{
-          background-color: $color-hover;
+          background-color: $color-hover-light;
           color: $font-color-dark;
       }
 
