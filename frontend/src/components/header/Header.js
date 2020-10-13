@@ -665,7 +665,7 @@ class Header extends PureComponent {
                     window.location = '/sitemap';
                   }}
                 >
-                  <i className="far fa-search  header-link-icon" />
+                  <i className="fal fa-search  header-link-icon" />
                   <span className="header-item-ml">SUCHE</span>
                 </div>
                 <div
@@ -689,7 +689,7 @@ class Header extends PureComponent {
                     window.location = '/window/53100/100';
                   }}
                 >
-                  <i className="far fa-cog header-link-icon" />
+                  <i className="fal fa-cog header-link-icon" />
                   <span className="header-item-ml">SYSTEM-ADMINISTRATION</span>
                 </div>
 
