@@ -108,7 +108,7 @@ background-color: $color-background;
 }
 
 .header-left-side {
-  width: calc(85% - 75px);
+  width: calc(80% - 15px);
   padding-left: 0px;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -116,7 +116,7 @@ background-color: $color-background;
 }
 
 .header-right-side {
-  width: calc(22% - 15px);
+  width: calc(27% - 5px);
   height: 50px;
 }
 
