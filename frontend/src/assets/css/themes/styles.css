@@ -237,7 +237,7 @@ background-color: $color-background;
       }
 
       &:focus {
-          background-color: $color-row;
+          background-color: $color-active;
       }
   }
 
@@ -397,12 +397,17 @@ background-color: $color-background;
 }
 
 .input-checkbox input:checked ~ .input-checkbox-tick {
-    background: $brand-color-purple;
-    border-color: $brand-color-purple;
+    background: $color-dark;
+    border-color: $color-dark;
 }
 
 input:checked + .input-slider {
   background-color: $brand-color-purple;
+}
+
+.input-checkbox-tick {
+  background-color: inherit;
+  border-color: $color-dark;
 }
 
 @media only screen and (max-width: 1660px) {
