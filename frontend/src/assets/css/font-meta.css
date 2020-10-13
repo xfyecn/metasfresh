@@ -1,14 +1,6 @@
 @charset 'UTF-8';
 
 @font-face {
-  font-family: 'Inter';
-  src: url('fonts/InterOTF/Inter-Medium-slnt=0.ttf') format('truetype');
-}
-
-
-
-
-@font-face {
     font-family: 'Roboto';
     src: url('fonts/Roboto-Regular.eot');
     src: url('fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
