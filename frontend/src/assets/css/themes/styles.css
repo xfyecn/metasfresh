@@ -404,3 +404,46 @@ background-color: $color-background;
 input:checked + .input-slider {
   background-color: $brand-color-purple;
 }
+
+@media only screen and (max-width: 1660px) {
+  .header-right-side {
+    width: calc(22% - 5px);
+    height: 50px;
+  }
+}
+
+
+@media only screen and (max-width: 1400px) {
+  .header-item-ml {
+    display: none;
+  }
+}
+
+
+@media only screen and (max-width: 960px) {
+  .header-item-ml {
+    display: none;
+  }
+
+  .header-username {
+    display: none;
+  };
+}
+
+@media only screen and (max-width: 550px) {
+  .header-logo {
+    height: 30px;
+  }
+
+  .custom-logo {
+    width: 135px;
+    padding-top: 20px;
+  }
+  .header-item-ml {
+    display: none;
+  }
+
+  .header-username {
+    display: none;
+  };
+}
