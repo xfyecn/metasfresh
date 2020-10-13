@@ -394,6 +394,7 @@ background-color: $color-background;
 
 .form-control-label {
   text-align: right;
+  color: $brand-color-purple;
 }
 
 .input-checkbox input:checked ~ .input-checkbox-tick {
@@ -408,6 +409,30 @@ input:checked + .input-slider {
 .input-checkbox-tick {
   background-color: inherit;
   border-color: $color-dark;
+}
+
+.input-icon {
+  color: $brand-color-purple;
+}
+
+.input-primary, .input-secondary {
+  border-color: $brand-color-purple;
+}
+
+.input-dropdown-container.select-dropdown.input-empty {
+  border-color: $brand-color-purple;
+}
+
+.section {
+  .separator {
+    padding: .25rem;
+    padding-left: .5rem;
+    background-color: $color-dark;
+
+    .separator-title {
+      color: white;
+    }
+  }
 }
 
 @media only screen and (max-width: 1660px) {
