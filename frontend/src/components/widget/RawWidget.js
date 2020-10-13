@@ -140,6 +140,15 @@ export class RawWidget extends Component {
   };
 
   /**
+   * @method customOverrideNone
+   * @summary - custom overwrite on FE side to have nothing diplayed when emptyText comes from BE preset
+   * @param {*} emptyText
+   */
+  customOverrideNone = (emptyText) => {
+    return emptyText === 'none' || emptyText === 'leer' ? '' : emptyText;
+  };
+
+  /**
    * @method handleFocus
    * @summary ToDo: Describe the method.
    * @param {*} e
@@ -487,7 +496,7 @@ export class RawWidget extends Component {
       className: 'input-field js-input-field',
       value: widgetValue,
       defaultValue,
-      placeholder: fields[0].emptyText,
+      placeholder: this.customOverrideNone(fields[0].emptyText),
       disabled: readonly,
       onFocus: this.handleFocus,
       tabIndex: tabIndex,
@@ -544,7 +553,7 @@ export class RawWidget extends Component {
                 timeFormat={false}
                 dateFormat={dateFormat || true}
                 inputProps={{
-                  placeholder: fields[0].emptyText,
+                  placeholder: this.customOverrideNone(fields[0].emptyText),
                   disabled: readonly,
                   tabIndex: tabIndex,
                 }}
@@ -579,7 +588,7 @@ export class RawWidget extends Component {
               dateFormat={dateFormat || true}
               hasTimeZone={true}
               inputProps={{
-                placeholder: fields[0].emptyText,
+                placeholder: this.customOverrideNone(fields[0].emptyText),
                 disabled: readonly,
                 tabIndex: tabIndex,
               }}
@@ -611,7 +620,7 @@ export class RawWidget extends Component {
               timeFormat={TIME_FORMAT}
               dateFormat={false}
               inputProps={{
-                placeholder: fields[0].emptyText,
+                placeholder: this.customOverrideNone(fields[0].emptyText),
                 disabled: readonly,
                 tabIndex: tabIndex,
               }}
@@ -640,7 +649,7 @@ export class RawWidget extends Component {
               timeFormat={false}
               dateFormat={DATE_FIELD_FORMATS[widgetType]}
               inputProps={{
-                placeholder: fields[0].emptyText,
+                placeholder: this.customOverrideNone(fields[0].emptyText),
                 disabled: readonly,
                 tabIndex: tabIndex,
               }}
@@ -699,8 +708,8 @@ export class RawWidget extends Component {
             widgetData={widgetData}
             placeholder={
               this.props.emptyText
-                ? this.props.emptyText
-                : this.props.fields[0].emptyText
+                ? this.customOverrideNone(this.props.emptyText)
+                : this.customOverrideNone(this.props.fields[0].emptyText)
             }
             readonly={readonly}
             mandatory={widgetData[0].mandatory}

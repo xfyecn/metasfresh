@@ -363,6 +363,10 @@ export class RawList extends PureComponent {
       ? this.props.properties.emptyText
       : placeholder;
 
+    // Custom override of the placeholder to replace `none`
+    placeholder =
+      placeholder === 'none' || placeholder === 'leer' ? '' : placeholder;
+
     const classicDropdown = (
       <TetherComponent
         attachment="top left"

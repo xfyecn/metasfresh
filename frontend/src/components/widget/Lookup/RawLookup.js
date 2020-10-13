@@ -283,7 +283,7 @@ export class RawLookup extends Component {
     } = this.props;
 
     // -- shape placeholder with the clearValueText in case this exists
-    const placeholder = mainProperty[0].clearValueText
+    let placeholder = mainProperty[0].clearValueText
       ? mainProperty[0].clearValueText
       : this.props.placeholder;
     const inputValue = this.inputSearch.value;
@@ -513,7 +513,12 @@ export class RawLookup extends Component {
                   readOnly={readonly}
                   disabled={readonly && !disabled}
                   tabIndex={tabIndex}
-                  placeholder={this.props.item.emptyText}
+                  placeholder={
+                    this.props.item.emptyText === 'none' ||
+                    this.props.item.emptyText === 'leer'
+                      ? ''
+                      : this.props.item.emptyText
+                  }
                   onChange={this.handleChange}
                   onClick={this.handleFocus}
                 />
