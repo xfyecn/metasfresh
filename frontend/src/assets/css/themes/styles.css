@@ -77,7 +77,6 @@ background-color: $color-background;
 
 .header-tab:hover {
   color: #ffffff;
-  text-decoration: underline;
 }
 
 .header-item {
