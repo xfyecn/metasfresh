@@ -117,6 +117,7 @@ background-color: $color-background;
 
 .header-right-side {
   width: calc(22% - 15px);
+  height: 50px;
 }
 
 .header-left-spacing {
@@ -386,4 +387,6 @@ background-color: $color-background;
 
 .side-panel-toggle {
   width: 60px;
+  height: 85px;
+  padding-top: 20px;
 }
