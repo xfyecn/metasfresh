@@ -8,6 +8,18 @@
   z-index: 100;
 }
 
+.header-container {
+  width: 100%;
+  display: inline-block;
+}
+
+.header-right-menu {
+  width: 55px;
+  float: left;
+  height: 70px;
+}
+
+
 .btn-meta-success {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -39,7 +51,8 @@
 }
 
 .custom-logo {
-  padding-right: 4rem;
+  width: 260px;
+  float: left;
 }
 
 .header-tab {
@@ -52,9 +65,8 @@
   margin-top: 0px;
   padding-top: 22px;
   padding-bottom: 20px;
-  padding-left: 15px;
+  padding-left: 20px;
   padding-right: 15px;
-  margin-left: 5px;
   font-size: 16px;
 }
 
@@ -70,7 +82,7 @@
   color: #ffffff;
   border-bottom: solid 3px #45D5E6;
   margin-top: 0px;
-  font-weight: 500;
+  font-weight: 500 !important;
   padding-bottom: 20px;
 }
 
@@ -83,7 +95,7 @@
 }
 
 .header-left-side {
-  width: calc(90% - 75px);
+  width: calc(85% - 75px);
   padding-left: 0px;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -91,7 +103,7 @@
 }
 
 .header-right-side {
-  width: calc(40% - 75px);
+  width: calc(22% - 15px);
 }
 
 .header-left-spacing {
@@ -107,10 +119,19 @@
   background-color: #303240;
   border: 0px;
   padding-bottom: 3px;
+  top: 8px;
+}
+
+.header-item-badge {
+  padding-top: 5px;
 }
 
 .header-user-link-open {
   color: #ffffff;
+}
+
+.header-logo {
+  height: auto;
 }
 
 .vertical-flip {
@@ -120,6 +141,10 @@
 .table-flex-wrapper {
   background-color: transparent;
   border: none;
+}
+
+.document-list-wrapper {
+  top: 40px;
 }
 
 .document-list-header {
@@ -289,3 +314,4 @@
   background-color: #4d5b80;
   border-color: #4d5b80;
 }
+

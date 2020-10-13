@@ -615,7 +615,7 @@ class Header extends PureComponent {
                 }
                 onMouseLeave={() => this.toggleTooltip('')}
                 className={classnames(
-                  'btn-square btn-header',
+                  'btn-square btn-header header-right-menu',
                   'tooltip-parent js-not-unselect',
                   {
                     'btn-meta-default-dark btn-subheader-open btn-header-open': isSubheaderShow,
