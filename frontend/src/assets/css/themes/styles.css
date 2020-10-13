@@ -15,6 +15,10 @@ background-color: $color-background;
   z-index: 100;
 }
 
+.header-custom-container {
+  padding-left: 1rem;
+}
+
 .header-container {
   width: 100%;
   display: inline-block;
@@ -70,9 +74,9 @@ background-color: $color-background;
   margin-right: 25px;
   font-weight: 500;
   margin-top: 0px;
-  padding-top: 22px;
+  padding-top: 20px;
   padding-bottom: 20px;
-  padding-left: 20px;
+  padding-left: 16px;
   padding-right: 15px;
   font-size: 16px;
   opacity: 0.75;
@@ -91,12 +95,12 @@ background-color: $color-background;
   border-bottom: solid 3px #45D5E6;
   margin-top: 0px;
   font-weight: 500 !important;
-  padding-bottom: 20px;
+  padding-bottom: 22px;
   opacity: 1;
 }
 
 .header-item-ml {
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .header-link-icon {
@@ -144,7 +148,7 @@ background-color: $color-background;
 }
 
 .vertical-flip {
-  transform: rotate(272deg);
+  /* transform: rotate(272deg); */
 }
 
 .sitemap { 

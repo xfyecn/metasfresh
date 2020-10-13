@@ -598,7 +598,7 @@ class Header extends PureComponent {
             'header-shadow': scrolled,
           })}
         >
-          <div className="container-fluid">
+          <div className="container-fluid header-custom-container">
             <div className="header-container">
               <div className="js-not-unselect custom-logo">
                 <img
@@ -678,7 +678,7 @@ class Header extends PureComponent {
                   }}
                 >
                   <i className="fal fa-wrench header-link-icon vertical-flip" />
-                  <span className="header-item-ml">TOOLS & RESOURCEN</span>
+                  <span className="header-item-ml">TOOLS & RESSOURCEN</span>
                 </div>
                 <div
                   className={classnames('float-left header-tab', {
