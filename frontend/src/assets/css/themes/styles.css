@@ -434,14 +434,20 @@ input:checked + .input-slider {
 }
 
 .section {
-  .separator {
-    padding: .25rem;
-    padding-left: .5rem;
-    background-color: $color-dark;
+  &.styled {
+    .separator {
+      padding: .25rem;
+      padding-left: .5rem;
+      background-color: $color-dark;
 
-    .separator-title {
-      color: white;
+      .separator-title {
+        color: white;
+      }
     }
+  }
+
+  .separator-title {
+    color: $color-dark;
   }
 }
 

@@ -8,7 +8,7 @@ import { INITIALLY_OPEN, INITIALLY_CLOSED } from '../../constants/Constants';
 class Section extends PureComponent {
   render() {
     const {
-      sectionLayout: { title, columns, closableMode },
+      sectionLayout: { title, columns, closableMode, uiStyle },
       sectionIndex,
       extendedData,
       isSectionCollapsed,
@@ -16,10 +16,16 @@ class Section extends PureComponent {
     } = this.props;
     const collapsible =
       closableMode === INITIALLY_OPEN || closableMode === INITIALLY_CLOSED;
+    const showSeparator = title || uiStyle;
 
     return (
-      <div className={classnames('section', { collapsed: isSectionCollapsed })}>
-        {title && (
+      <div
+        className={classnames('section', {
+          collapsed: isSectionCollapsed,
+          styled: uiStyle,
+        })}
+      >
+        {showSeparator && (
           <Separator
             title={title}
             idx={sectionIndex}
