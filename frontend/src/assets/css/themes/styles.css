@@ -20,7 +20,7 @@ background-color: $color-background;
   display: inline-block;
 }
 
-.header-right-menu {
+.header-left-menu {
   width: 55px;
   float: left;
   height: 70px;
@@ -142,6 +142,14 @@ background-color: $color-background;
 .vertical-flip {
   transform: rotate(272deg);
 }
+
+.sitemap { 
+  margin-top: 15px;
+}
+.search-wrapper {
+  padding-bottom: 15px;
+}
+
 
 .user-dropdown-item {
   padding: 1rem .7rem;
@@ -329,7 +337,45 @@ background-color: $color-background;
   }
 }
 
+
+.user-dropdown-item {
+  padding: 1rem .7rem;
+  background-color: #262833;
+  color: #ffffff;
+}
+
+.user-dropdown-item i {
+  margin-right: 5px;
+}
+
+.user-dropdown-item:not(.user-dropdown-header-item):hover,
+.user-dropdown-item:not(.user-dropdown-header-item):focus {
+  background-color: #4d5b80;
+  color: #fff;
+}
+
+.btn-meta-primary {
+  color: #fff;
+  background-color: #262833;
+  border-color: #262833;
+}
+.btn-meta-primary:hover{
+  background-color: color(#4d5b80; lightness(45%));
+  border-color: color(#4d5b80; lightness(45%));
+}
+
+.btn-header-open {
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  background-color: #4d5b80;
+  border-color: #4d5b80;
+}
+
 .input-checkbox input:checked ~ .input-checkbox-tick {
     background: $brand-color-purple;
     border-color: $brand-color-purple;
+}
+
+.side-panel-toggle {
+  width: 60px;
 }
