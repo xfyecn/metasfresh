@@ -4,11 +4,10 @@ $shadow-light: rgba(48,49,64,11%);
 $color-hover: rgba(107, 109, 145, 15%);
 $color-background: #f7f4f0;
 $color-active: #fcfbfa;
+$color-dark: #303140;
 $brand-color-purple: #6B6D91;
 
-$color-row: #e4e1e2;
-
-$font-color-dark: #303140;
+$font-color-dark: $color-dark;
 
 $brand-color-secondary: #72717C;
 $brand-bright-color: #f8f4ef;
