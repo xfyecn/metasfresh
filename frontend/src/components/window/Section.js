@@ -16,16 +16,16 @@ class Section extends PureComponent {
     } = this.props;
     const collapsible =
       closableMode === INITIALLY_OPEN || closableMode === INITIALLY_CLOSED;
-    const showSeparator = title || uiStyle;
 
     return (
       <div
         className={classnames('section', {
           collapsed: isSectionCollapsed,
-          styled: uiStyle,
+          primary: uiStyle === 'primary',
+          secondary: uiStyle === 'secondary',
         })}
       >
-        {showSeparator && (
+        {title && (
           <Separator
             title={title}
             idx={sectionIndex}
