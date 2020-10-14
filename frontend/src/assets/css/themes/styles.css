@@ -92,8 +92,9 @@ background-color: $color-background;
   height: 50px;
 }
 
-.header-left-spacing {
+.header-chevron-spacing {
   margin-left: 1.2rem;
+  margin-right: 5px;
 }
 
 .header-item-open {
@@ -114,6 +115,7 @@ background-color: $color-background;
 
 .header-user-link-open {
   color: #ffffff;
+  margin-top: 0px;
 }
 
 .header-logo {

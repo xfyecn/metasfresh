@@ -149,7 +149,7 @@ class UserDropdown extends Component {
           onClick={() => handleUDOpen(true)}
         >
           <span className="header-username">{me.fullname}</span>
-          <span className="header-left-spacing">
+          <span className="header-chevron-spacing">
             {open && <i className="far fa-chevron-up" />}
             {!open && <i className="far fa-chevron-down" />}
           </span>
