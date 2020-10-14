@@ -200,10 +200,14 @@ background-color: $color-background;
   border-color: #4d5b80;
 }
 
+/**
+ * Override bootstap buttons - TODO: we might need to find better solutions for this
+ */
 .btn-success {
   background-color: #008FC0 !important;
   border-color: #008FC0 !important;
   border: 0px;
+  box-shadow: 0 0 0 0.1rem #ffffff !important;
 }
 
 .btn-success:focus {
@@ -212,6 +216,11 @@ background-color: $color-background;
 .btn-success:hover {
   box-shadow: 0 0 0 0.1rem #ffffff;
 }
+/**
+ * End - Override bootstap buttons
+ */
+
+
 
 .applyBtn {
   background-color: #297FA6;
