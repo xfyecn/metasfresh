@@ -200,6 +200,56 @@ background-color: $color-background;
   border-color: #4d5b80;
 }
 
+.btn-success {
+  background-color: #008FC0 !important;
+  border-color: #008FC0 !important;
+  border: 0px;
+}
+
+.btn-success:focus {
+  box-shadow: 0 0 0 0.1rem #ffffff;
+}
+.btn-success:hover {
+  box-shadow: 0 0 0 0.1rem #ffffff;
+}
+
+.applyBtn {
+  background-color: #297FA6;
+  border-color: #297FA6;
+  border-radius: 6px;
+  width: 72px;
+  height: 36px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 22px;
+}
+
+.applyBtn:hover {
+  background-color: #0084AC;
+  border-color: #0084AC;
+}
+
+.applyBtn:focus {
+  background-color: #0089B3;
+  border-color: #0089B3;
+}
+
+.applyBtn:disabled {
+  background-color: #cccccc;
+  border-color: #cccccc;
+  color: #898989;
+}
+
+.daterangepicker .applyBtn:active {
+  background-color: #008FC0;
+  border-color: #008FC0;
+}
+
+
 .side-panel-toggle {
   width: 60px;
   height: 85px;
