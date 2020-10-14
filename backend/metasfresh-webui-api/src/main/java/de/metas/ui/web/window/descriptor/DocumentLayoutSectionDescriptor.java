@@ -167,19 +167,7 @@ public final class DocumentLayoutSectionDescriptor implements Serializable
 			return columnsBuilders
 					.stream()
 					.map(columnBuilder -> columnBuilder.build())
-					.filter(column -> checkValid(column))
 					.collect(GuavaCollectors.toImmutableList());
-		}
-
-		private boolean checkValid(final DocumentLayoutColumnDescriptor column)
-		{
-			if (!column.hasElementGroups())
-			{
-				logger.trace("Skip adding {} to {} because it does not have elements groups", column, this);
-				return false;
-			}
-
-			return true;
 		}
 
 		public Builder setCaption(@NonNull final ITranslatableString caption)

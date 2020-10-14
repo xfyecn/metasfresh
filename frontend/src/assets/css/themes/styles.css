@@ -495,20 +495,31 @@ input:checked + .input-slider {
 }
 
 .section {
-  &.styled {
+  .separator-title {
+    color: $color-dark;
+    font-weight: 700;
+  }
+
+  &.primary {
     .separator {
-      padding: .25rem;
-      padding-left: .5rem;
-      background-color: $color-dark;
+      padding: .5rem 0;
 
       .separator-title {
-        color: white;
+        font-size: 1.6rem;
       }
     }
   }
 
-  .separator-title {
-    color: $color-dark;
+  &.secondary {
+    .separator {
+      padding: 1rem 0;
+      border-top: 1px solid $brand-color-purple;
+
+      .separator-title {
+        font-size: 1rem;
+        color: $brand-color-purple;
+      }
+    }
   }
 }
 

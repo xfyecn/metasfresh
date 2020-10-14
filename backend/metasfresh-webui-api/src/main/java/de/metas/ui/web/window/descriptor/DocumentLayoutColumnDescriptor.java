@@ -66,11 +66,6 @@ public class DocumentLayoutColumnDescriptor
 		return elementGroups;
 	}
 
-	public boolean hasElementGroups()
-	{
-		return !elementGroups.isEmpty();
-	}
-
 	public static final class Builder
 	{
 		private static final Logger logger = LogManager.getLogger(DocumentLayoutColumnDescriptor.Builder.class);
