@@ -341,6 +341,10 @@ background-color: $color-background;
   color: white;  
 }
 
+.filter-wrapper .form-control-label {
+  text-align: left;
+}
+
 /* TABLES */
 
 .table-flex-wrapper {
