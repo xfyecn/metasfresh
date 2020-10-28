@@ -346,6 +346,8 @@ export default class Table extends PureComponent {
       updatePropertyValue,
       tableId,
       onFastInlineEdit,
+      isModal,
+      updateDataSaveStatus,
     } = this.props;
 
     if (!rows.length || !columns.length) {
@@ -387,6 +389,7 @@ export default class Table extends PureComponent {
           updatePropertyValue,
           tableId,
         }}
+        updateDataSaveStatus={isModal ? updateDataSaveStatus : null}
         cols={columns}
         key={`row-${i}${viewId ? `-${viewId}` : ''}`}
         dataKey={`row-${i}${viewId ? `-${viewId}` : ''}`}

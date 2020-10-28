@@ -275,7 +275,16 @@ class TableRow extends PureComponent {
    * @param {boolean} [mark] - marks the text(like when you click and hold and select the text)
    */
   handleEditProperty = ({ event, property, focus, readonly, select, mark }) => {
+    const { updateDataSaveStatus } = this.props;
+
     this._focusCell(property, () => {
+      // if we're editing a field in a modal table, we want to prevent `{esc}` key from closing
+      // the modal until we're done with our edits. So any `property` means that a field is edited.
+      // If `property` is undefined, we're bluring the field and can unlock the modal close
+      // shortcut.
+      updateDataSaveStatus &&
+        updateDataSaveStatus('modal', { saved: !property });
+
       this._editProperty({ event, property, focus, readonly, select, mark });
     });
   };

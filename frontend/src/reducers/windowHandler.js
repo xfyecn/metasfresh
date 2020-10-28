@@ -319,8 +319,7 @@ export default function windowHandler(state = initialState, action) {
       return {
         ...state,
         modal: {
-          ...state.modal,
-          ...initialState.modal,
+          ...initialModalState,
         },
       };
     case OPEN_RAW_MODAL:

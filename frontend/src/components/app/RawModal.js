@@ -185,12 +185,12 @@ class RawModal extends Component {
   handleClose = async (type) => {
     const {
       dispatch,
-      // TODO: Looks like we're never passing this
-      closeCallback,
       viewId,
       windowId,
       requests,
       rawModal,
+      closeCallback,
+      modalSaveStatus,
     } = this.props;
     const { isNew } = this.state;
 
@@ -215,6 +215,11 @@ class RawModal extends Component {
       }
     }
 
+    // closing blocked by editing field in the table
+    if (!modalSaveStatus) {
+      return;
+    }
+
     if (type === 'BACK') {
       await dispatch(
         openRawModal(rawModal.parentWindowId, rawModal.parentViewId)
@@ -223,7 +228,6 @@ class RawModal extends Component {
       if (closeCallback) {
         await closeCallback(isNew);
       }
-
       await this.removeModal();
       await deleteViewRequest(windowId, viewId, type);
     }
@@ -417,6 +421,7 @@ ModalButton.propTypes = {
 RawModal.propTypes = {
   dispatch: PropTypes.func.isRequired,
   modalVisible: PropTypes.bool,
+  modalSaveStatus: PropTypes.bool,
   rawModal: PropTypes.object.isRequired,
   requests: PropTypes.object.isRequired,
   success: PropTypes.bool.isRequired,
@@ -438,6 +443,11 @@ RawModal.propTypes = {
  */
 const mapStateToProps = ({ windowHandler }) => ({
   modalVisible: windowHandler.modal.visible || false,
+  modalSaveStatus:
+    windowHandler.modal.saveStatus &&
+    windowHandler.modal.saveStatus.saved !== undefined
+      ? windowHandler.modal.saveStatus.saved
+      : true,
   rawModal: windowHandler.rawModal,
   requests: windowHandler.patches.requests,
   success: windowHandler.patches.success,

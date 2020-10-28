@@ -12,7 +12,11 @@ import {
   setActiveSort,
 } from '../actions/TableActions';
 import { showIncludedView } from '../actions/ViewActions';
-import { openModal, updatePropertyValue } from '../actions/WindowActions';
+import {
+  openModal,
+  updatePropertyValue,
+  updateDataSaveStatus,
+} from '../actions/WindowActions';
 
 import { containerPropTypes } from '../utils/tableHelpers';
 import { mapIncluded } from '../utils/documentListHelper';
@@ -279,6 +283,7 @@ export default connect(
     updatePropertyValue,
     showIncludedView,
     setActiveSort,
+    updateDataSaveStatus,
   },
   false,
   { forwardRef: true }

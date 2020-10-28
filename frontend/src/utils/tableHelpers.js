@@ -116,6 +116,7 @@ export const tableRowPropTypes = {
   tableId: PropTypes.string,
   updatePropertyValue: PropTypes.func,
   onFastInlineEdit: PropTypes.func,
+  updateDataSaveStatus: PropTypes.func,
 };
 
 /**
