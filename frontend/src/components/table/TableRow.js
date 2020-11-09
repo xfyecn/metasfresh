@@ -15,6 +15,7 @@ import {
   nestedSelect,
   getTooltipWidget,
 } from '../../utils/tableHelpers';
+import WithSkipClickOnDoubleclick from '../hoc/WithSkipClickOnDoubleclick';
 
 import TableCell from './TableCell';
 import WithMobileDoubleTap from '../WithMobileDoubleTap';
@@ -689,4 +690,4 @@ class TableRow extends PureComponent {
 
 TableRow.propTypes = tableRowPropTypes;
 
-export default TableRow;
+export default WithSkipClickOnDoubleclick(TableRow);

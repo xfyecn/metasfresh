@@ -6,7 +6,7 @@ import currentDevice from 'current-device';
 import { handleCopy, componentPropTypes } from '../../utils/tableHelpers';
 
 import TableHeader from './TableHeader';
-import TableRow from './TableRow';
+import WrappedRow from './TableRow';
 
 const MOBILE_TABLE_SIZE_LIMIT = 30; // subjective number, based on empiric testing
 const isMobileOrTablet =
@@ -370,7 +370,7 @@ export default class Table extends PureComponent {
     }
 
     return renderRows.map((item, i) => (
-      <TableRow
+      <WrappedRow
         {...item}
         {...{
           page,
