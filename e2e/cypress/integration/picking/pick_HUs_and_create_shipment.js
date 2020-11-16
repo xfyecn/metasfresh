@@ -86,11 +86,8 @@ describe('Pick the SO', function() {
         .click();
       cy.selectRowByColumnAndValue({ column: orderColumn, value: soDocNumber }, false, true);
     });
-    // cy.get('.document-list-is-included .table-flex-wrapper .row-selected', { timeout: 15000 })
-    //   .should('exist')
-    //   .then(() => {
+
     cy.executeQuickActionWithRightSideTable('WEBUI_Picking_HUEditor_Launcher', true);
-    //  });
 
     cy.selectRightTable().within(() => {
       cy.selectItemUsingBarcodeFilter({ column: huSelectionHuCodeColumn, value: huValue1 }, false, true);
