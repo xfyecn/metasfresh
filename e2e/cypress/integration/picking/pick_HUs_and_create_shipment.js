@@ -107,6 +107,7 @@ describe('Pick the SO', function() {
 
     cy.selectRightTable().within(() => {
       cy.selectItemUsingBarcodeFilter({ column: huSelectionHuCodeColumn, value: huValue2 }, false, true);
+      cy.selectRowByColumnAndValue({ column: huSelectionHuCodeColumn, value: huValue2 }, false, true);
     });
     cy.get('.document-list-is-included .table-flex-wrapper .row-selected', { timeout: 15000 })
       .should('exist')
