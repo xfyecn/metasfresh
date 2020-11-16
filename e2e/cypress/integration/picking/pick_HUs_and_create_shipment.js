@@ -81,13 +81,16 @@ describe('Pick the SO', function() {
 
   it('Pick first HU', function() {
     cy.selectLeftTable().within(() => {
+      cy.get('.page-link')
+        .eq(1)
+        .click();
       cy.selectRowByColumnAndValue({ column: orderColumn, value: soDocNumber }, false, true);
     });
-    cy.get('.document-list-is-included .table-flex-wrapper .row-selected', { timeout: 15000 })
-      .should('exist')
-      .then(() => {
-        cy.executeQuickActionWithRightSideTable('WEBUI_Picking_HUEditor_Launcher', true);
-      });
+    // cy.get('.document-list-is-included .table-flex-wrapper .row-selected', { timeout: 15000 })
+    //   .should('exist')
+    //   .then(() => {
+    cy.executeQuickActionWithRightSideTable('WEBUI_Picking_HUEditor_Launcher', true);
+    //  });
 
     cy.selectRightTable().within(() => {
       cy.selectItemUsingBarcodeFilter({ column: huSelectionHuCodeColumn, value: huValue1 }, false, true);
