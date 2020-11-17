@@ -85,8 +85,9 @@ describe('Pick the SO', function() {
         .eq(1)
         .click();
       cy.selectRowByColumnAndValue({ column: orderColumn, value: soDocNumber }, false, true);
+      cy.log(`Selected row by column ${orderColumn}, and value: ${soDocNumber}`);
     });
-
+    cy.log(`QuickaAction on the RightSideTable`);
     cy.executeQuickActionWithRightSideTable('WEBUI_Picking_HUEditor_Launcher', true);
 
     cy.selectRightTable().within(() => {
