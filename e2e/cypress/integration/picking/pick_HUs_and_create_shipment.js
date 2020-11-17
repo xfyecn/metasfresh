@@ -98,6 +98,7 @@ describe('Pick the SO', function() {
 
     cy.selectRightTable().within(() => {
       cy.selectItemUsingBarcodeFilter({ column: huSelectionHuCodeColumn, value: huValue1 }, false, true);
+      cy.selectRowByColumnAndValue({ column: huSelectionHuCodeColumn, value: huValue1 }, false, true);
     });
     cy.get('.spinner', { timeout: 10000 })
       .should('not.exist')
@@ -106,22 +107,28 @@ describe('Pick the SO', function() {
       });
   });
 
-  //   it('Pick second HU', function() {
-  //     cy.selectLeftTable().within(() => {
-  //       cy.selectRowByColumnAndValue({ column: orderColumn, value: soDocNumber }, false, true);
-  //     });
-  //     cy.executeQuickActionWithRightSideTable('WEBUI_Picking_HUEditor_Launcher', true);
+  it('Pick second HU', function() {
+    cy.selectLeftTable().within(() => {
+      cy.get('.page-link')
+        .eq(1)
+        .click();
+      cy.selectRowByColumnAndValue({ column: orderColumn, value: soDocNumber }, false, true);
+    });
 
-  //     cy.selectRightTable().within(() => {
-  //       cy.selectItemUsingBarcodeFilter({ column: huSelectionHuCodeColumn, value: huValue2 }, false, true);
-  //       cy.selectRowByColumnAndValue({ column: huSelectionHuCodeColumn, value: huValue2 }, false, true);
-  //     });
-  //     cy.get('.document-list-is-included .table-flex-wrapper .row-selected', { timeout: 15000 })
-  //       .should('exist')
-  //       .then(() => {
-  //         cy.executeQuickAction('WEBUI_Picking_HUEditor_PickHU', true, false);
-  //       });
-  //   });
+    cy.log(`QuickaAction on the RightSideTable - pick second HU`);
+
+    cy.executeQuickActionWithRightSideTable('WEBUI_Picking_HUEditor_Launcher', true);
+
+    cy.selectRightTable().within(() => {
+      cy.selectItemUsingBarcodeFilter({ column: huSelectionHuCodeColumn, value: huValue2 }, false, true);
+      cy.selectRowByColumnAndValue({ column: huSelectionHuCodeColumn, value: huValue2 }, false, true);
+    });
+    cy.get('.spinner', { timeout: 10000 })
+      .should('not.exist')
+      .then(() => {
+        cy.executeQuickAction('WEBUI_Picking_HUEditor_PickHU', true, false);
+      });
+  });
 
   //   it('Confirm Picks', function() {
   //     cy.selectLeftTable().within(() => {
