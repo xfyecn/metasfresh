@@ -129,26 +129,26 @@ describe('Pick the SO', function() {
       });
   });
 
-    it('Confirm Picks', function() {
-      cy.selectLeftTable().within(() => {
-        cy.selectRowByColumnAndValue({ column: orderColumn, value: soDocNumber }, false, true);
-      });
-      cy.selectRightTable().within(() => {
-        cy.selectRowByColumnAndValue({ column: pickingHuCodeColumn, value: huValue2 }, false, true);
-      });
-      cy.executeQuickAction('WEBUI_Picking_M_Picking_Candidate_Process', true, false);
-      cy.waitForSaveIndicator();
-
-      cy.selectLeftTable().within(() => {
-        cy.selectRowByColumnAndValue({ column: orderColumn, value: soDocNumber }, false, true);
-      });
-      cy.selectRightTable().within(() => {
-        cy.selectRowByColumnAndValue({ column: pickingHuCodeColumn, value: huValue1 }, false, true);
-      });
-      cy.executeQuickAction('WEBUI_Picking_M_Picking_Candidate_Process', true, false);
-      cy.waitForSaveIndicator();
+  it('Confirm Picks', function() {
+    cy.selectLeftTable().within(() => {
+      cy.selectRowByColumnAndValue({ column: orderColumn, value: soDocNumber }, false, true);
     });
+    cy.selectRightTable().within(() => {
+      cy.selectRowByColumnAndValue({ column: pickingHuCodeColumn, value: huValue2 }, false, true);
+    });
+    cy.executeQuickAction('WEBUI_Picking_M_Picking_Candidate_Process', true, false);
+    cy.waitForSaveIndicator();
+
+    cy.selectLeftTable().within(() => {
+      cy.selectRowByColumnAndValue({ column: orderColumn, value: soDocNumber }, false, true);
+    });
+    cy.selectRightTable().within(() => {
+      cy.selectRowByColumnAndValue({ column: pickingHuCodeColumn, value: huValue1 }, false, true);
+    });
+    cy.executeQuickAction('WEBUI_Picking_M_Picking_Candidate_Process', true, false);
+    cy.waitForSaveIndicator();
   });
+  // });
 
   // describe('Generate the Shipment', function() {
   //   it('Open the Referenced Shipment Disposition', function() {
